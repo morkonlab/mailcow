@@ -19,7 +19,7 @@ Install as root, umask = 0022
 - nano docker-compose.override.yml
 - mkdir -p data/conf/borgmatic/etc
 - source mailcow.conf
-- cat <<EOF > data/conf/borgmatic/etc/config.yaml
+- cat <\<EOF > data/conf/borgmatic/etc/config.yaml
 - add to config: ssh_command: ssh -i /root/.ssh/<keyfile>
 - mkdir data/conf/borgmatic/ssh
 - place keyfile in data/conf/borgmatic/ssh
