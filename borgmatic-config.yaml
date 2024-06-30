@@ -1,0 +1,26 @@
+cat <<EOF > data/conf/borgmatic/etc/config.yaml
+source_directories:
+    - /mnt/source/vmail
+    - /mnt/source/crypt
+    - /mnt/source/redis
+    - /mnt/source/rspamd
+    - /mnt/source/postfix
+repositories:
+    - path: ssh://user@rsync.net:22/./mailcow
+      label: rsync
+exclude_patterns:
+    - '/mnt/source/postfix/public/'
+    - '/mnt/source/postfix/private/'
+    - '/mnt/source/rspamd/rspamd.sock'
+
+keep_hourly: 24
+keep_daily: 7
+keep_weekly: 4
+keep_monthly: 6
+
+mysql_databases:
+    - name: ${DBNAME}
+      username: ${DBUSER}
+      password: ${DBPASS}
+      options: --default-character-set=utf8mb4
+EOF
