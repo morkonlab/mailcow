@@ -13,11 +13,10 @@ Install as root, umask = 0022
 - source mailcow.conf
 - cat <<EOF > data/conf/borgmatic/etc/config.yaml
 - add to config: ssh_command: ssh -i /root/.ssh/<keyfile>
-- mkdir -p data/conf/borgmatic/ssh
+- mkdir data/conf/borgmatic/ssh
 - place keyfile in data/conf/borgmatic/ssh
 - chmod 600 data/conf/borgmatic/<keyfile>
 - nano data/conf/borgmatic/etc/crontab.txt
-- 14 * * * * PATH=$PATH:/usr/local/bin /usr/local/bin/borgmatic --stats -v 0 2>&1
 - docker compose up -d
 - docker compose exec borgmatic-mailcow borgmatic init --encryption repokey-blake2
 - docker compose restart borgmatic-mailcow
