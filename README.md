@@ -1,4 +1,12 @@
-# Mailcow
+# Mailcow with Borgmatic backups
+
+## Prepare storage box
+- Create subuser
+- Create new SSH keys with ssh-keygen
+- cat ~/.ssh/<keyfile> | ssh -p23 u******@u******.your-storagebox.de install-ssh-key
+- Test: sftp -P <22 or 23> u******@u******.your-storagebox.de
+
+## Mailcow
 
 Install as root, umask = 0022
 
@@ -22,12 +30,22 @@ Install as root, umask = 0022
 - docker compose restart borgmatic-mailcow
 
 
-Create initial backup
+### Create initial backup
 ```
 docker compose exec borgmatic-mailcow borgmatic --stats -v 0
 ```
 
-View stats
+### View stats
 ```
 docker compose exec borgmatic-mailcow borgmatic --stats
+```
+
+### List
+```
+docker compose exec borgmatic-mailcow borgmatic list
+```
+
+### Info
+```
+docker compose exec borgmatic-mailcow borgmatic info
 ```
