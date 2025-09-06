@@ -19,8 +19,10 @@ keep_monthly: 6
 
 ssh_command: ssh -i /root/.ssh/<keyfile>
 
-mysql_databases:
+mariadb_databases:
     - name: mailcow
       username: <user>
       password: <pass>
-      options: --default-character-set=utf8mb4
+      options: "--default-character-set=utf8mb4 --skip-ssl"
+      list_options: "--skip-ssl"
+      restore_options: "--skip-ssl"
